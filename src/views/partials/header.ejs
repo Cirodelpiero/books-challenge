@@ -4,15 +4,26 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/VisualEditor_-_Icon_-_Open-book-2.svg/1024px-VisualEditor_-_Icon_-_Open-book-2.svg.png" alt="twbs" width="50" height="50" class="rounded-circle flex-shrink-0">
     </a>
 
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="/" class="nav-link px-2 link-dark">Books</a></li>
-      <li><a href="/authors" class="nav-link px-2 link-dark">Authors</a></li>
-      <li><a href="/books/search" class="nav-link px-2 link-dark">Search</a></li>
+    <ul class=" nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a href="/" class="rounded-pill  bg-secondary text-dark  nav-link px-2 link-dark me-2" style="text-decoration: underline">Books</a></li>
+      <li><a href="/authors" class="rounded-pill bg-secondary text-dark nav-link px-2 link-dark me-2" style="text-decoration: underline">Authors</a></li>
+      <li><a href="/books/search" class="rounded-pill bg-secondary text-dark  nav-link px-2 link-dark me-2" style="text-decoration: underline">Search</a></li>
     </ul>
 
     <div class="col-md-3 text-end">
-      <a href="/users/login" class="btn btn-outline-primary me-2">Login</a>
-      <a href="/users/register" class="btn btn-outline-primary me-2">Sign-up</a>
+      <% if (!locals.message) { %>
+      <a href="/users/login" class="btn btn-success p-2 me-1">Login</a>
+      <% } else { %>
+        <a href="/users/logout" class="btn btn-danger p-2 me-1">Logout</a>
+      <% }  %>
+
+      <a href="/users/register" class="btn btn-outline-primary p-2 me-1">Sign-up</a>
+    </div>
+
+    <div class="col-md-3  ">
+      <% if (locals.message) { %>
+        <p class="text-light bg-dark mb-2 justify-content-center mb-md-0"> <%= message.success %>  </p>
+      <% } %>
     </div>
   </header>
 </div>
